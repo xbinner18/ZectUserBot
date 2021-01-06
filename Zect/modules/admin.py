@@ -48,7 +48,7 @@ async def ban_hammer(_, message: Message):
                 chat_id=message.chat.id,
                 user_id=get_user.id,
             )
-            await message.edit(f"{get_user.first_name} has been banned.")
+            await message.edit(f"**User '{get_user.first_name}' has been banned.**")
         except:
             await message.edit("I can't ban this user.")
 
@@ -67,7 +67,7 @@ async def unban(_, message: Message):
         try:
             get_user = await app.get_users(user)
             await app.unban_chat_member(chat_id=message.chat.id, user_id=get_user.id)
-            await message.edit(f"{get_user.first_name} was unbanned.")
+            await message.edit(f"**User '{get_user.first_name}' was unbanned.**")
         except:
             await message.edit("I can't unban this user.")
 
@@ -106,7 +106,7 @@ async def mute_hammer(_, message: Message):
                 user_id=get_user.id,
                 permissions=mute_permission,
             )
-            await message.edit(f"{get_user.first_name} has been muted.")
+            await message.edit(f"**User '{get_user.first_name}' has been muted.**")
         except:
             await message.edit("I can't mute this user.")
 
@@ -145,7 +145,7 @@ async def unmute(_, message: Message):
                 user_id=get_user.id,
                 permissions=unmute_permissions,
             )
-            await message.edit(f"{get_user.first_name} was unmuted.")
+            await message.edit(f"**User '{get_user.first_name}' was unmuted.**")
         except:
             await message.edit("I can't unmute this user.")
 
@@ -167,7 +167,7 @@ async def kick_user(_, message: Message):
                 chat_id=message.chat.id,
                 user_id=get_user.id,
             )
-            await message.edit(f"{get_user.first_name} was kicked.")
+            await message.edit(f"**User '{get_user.first_name}' was kicked.**")
         except:
             await message.edit("I can't kick this user.")
 
@@ -203,18 +203,18 @@ async def pin_message(_, message: Message):
                     message.reply_to_message.message_id,
                     disable_notification=disable_notification,
                 )
-                await message.edit("`Pinned message!`")
+                await message.edit("**Pinned message.**")
             else:
                 # You didn't reply to a message and we can't pin anything. ffs
                 await message.edit(
-                    "`Reply to a message so that I can pin the god damned thing...`"
+                    "**Reply to a message so that I can pin the god damned thing...**"
                 )
         else:
             # You have no business running this command.
-            await message.edit("`I am not an admin here lmao. What am I doing?`")
+            await message.edit("**I am not an admin here lmao. What am I doing?**")
     else:
         # Are you fucking dumb this is not a group ffs.
-        await message.edit("`This is not a place where I can pin shit.`")
+        await message.edit("**This is not a place where I can pin shit.**")
 
     # And of course delete your lame attempt at changing the group picture.
     # RIP you.
